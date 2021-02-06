@@ -16,7 +16,7 @@ module.exports = {
                 let location = wc([lon, lat]);
 
                 if (location == null) {
-                    location = "Over the Oceans";
+                    location = "the Oceans";
                 }
                 else {
                     location = cc.findCountry({a3: location}).name;
