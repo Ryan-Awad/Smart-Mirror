@@ -1,2 +1,2 @@
-# Magic Mirror
+# Smart Mirror
 ### Runs on a Raspberry Pi 3 B+

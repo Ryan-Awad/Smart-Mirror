@@ -1,6 +1,15 @@
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding: 25px;
+}
+
+#feature p {
+    font-weight: 300;
+    font-size:18px;
+}
+
+#feature h2 {
+    font-weight: 400;
 }

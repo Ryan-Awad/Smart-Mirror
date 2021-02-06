@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel=stylesheet href='gui.css'/>
+        <link rel='stylesheet' type='text/css' href='gui.css'/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     </head>
     <body>
         <script type="text/javascript" src='gui.js'></script> 
 
-        <h1>Hello, Ryan Awad</h1>
+        <h1 style='font-weight: 300;'>Hello, Ryan Awad</h1>
         <br>
-        <h2>Today's Weather</h2>
-        <h3 id='weather-display1'>Temperature: </h3>
-        <h3 id='weather-display2'>Feels Like: </h3>
-        <h3 id='weather-display3'>Sky: </h3>
-        <h3 id='weather-display4'>Wind: </h3>
-        <h3 id='weather-display5'>Humidity: </h3>
+        <div id='feature' class='time-div'>
+            <h2 id='time-display'>12:36</h2>
+            <p id='date-display'>2021-2-6</p>
+        </div>
 
-        <br><br><br>
+        <br><br>
+        <div id='feature' class='weather-div'>
+            <h2>Today's Weather</h2>
+            <p id='weather-display1'>Temperature: </p>
+            <p id='weather-display2'>Feels Like: </p>
+            <p id='weather-display3'>Sky: </p>
+            <p id='weather-display4'>Wind: </p>
+            <p id='weather-display5'>Humidity: </p>
+        </div>
 
-        <h2>Current ISS Position</h2>
-        <h3 id='iss-display1'>Flying Over </h3>
-        <h3 id='iss-display2'>Longitude: </h3>
-        <h3 id='iss-display3'>Latitude: </h3>
+        <br><br>
+        <div id='feature' class='iss-div'> 
+            <h2>Current ISS Position</h2>
+            <p id='iss-display1'>Flying Over </p>
+            <p id='iss-display2'>Longitude: </p>
+            <p id='iss-display3'>Latitude: </p>
+        </div>
     </body>
 </html>
