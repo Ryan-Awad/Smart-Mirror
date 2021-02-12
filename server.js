@@ -5,10 +5,9 @@ const path = require('path');
 const { getWeather } = require('./features/weather');
 const { getISS } = require('./features/iss');
 const { getDate } = require('./features/date');
-const date = require('./features/date');
 
 const app = express();
-const port = 3000; 
+const port = 3000;
 
 app.use(express.static(__dirname + '/GUI'));
 
