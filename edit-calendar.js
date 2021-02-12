@@ -1,3 +1,4 @@
+const { clear } = require('console');
 const fs = require('fs');
 const {argv} = require('yargs')
     .option('d', {
@@ -25,8 +26,11 @@ const {argv} = require('yargs')
         nargs: 1
     });
 
-if (typeof argv.c == 'string') {
-    if (argv.c.toLowerCase() == 'all') {
+
+var clearArg = argv.c;
+if (typeof clearArg == 'string') {
+    clearArg = clearArg.toLowerCase();
+    if (clearArg == 'all') {
         fs.readFile('GUI/data/calendar.json', (err, data) => {
             if (!err) {
                 var weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -53,8 +57,8 @@ if (typeof argv.c == 'string') {
         fs.readFile('GUI/data/calendar.json', (err, data) => {
             if (!err) {
                 var jsonData = JSON.parse(data);
-                jsonData[0][argv.c].name = null;
-                jsonData[0][argv.c].importance = null;
+                jsonData[0][clearArg].name = null;
+                jsonData[0][clearArg].importance = null;
         
                 fs.writeFile('GUI/data/calendar.json', JSON.stringify(jsonData), (err) => {
                     if (err) {
@@ -71,7 +75,7 @@ if (typeof argv.c == 'string') {
     }
 }
 else {
-    var day = argv.d;
+    var day = argv.d.toLowerCase();
     var eventName = argv.n;
     var importance;
     if (typeof eventName == 'string' && typeof day == 'string') {
