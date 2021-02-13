@@ -1,7 +1,7 @@
-function loadData(callback) {
+function loadData(path, callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType('application/json');
-    xobj.open('GET', 'data/data.json', true);
+    xobj.open('GET', path, true);
     xobj.onreadystatechange = function() {
         if (xobj.readyState == 4 && xobj.status == '200') {
             callback(xobj.responseText);
@@ -10,7 +10,7 @@ function loadData(callback) {
     xobj.send(null);
 };
 
-loadData(function(response) {
+loadData('data/data.json', (response) => {
     var jsonData = JSON.parse(response);
 
     // Time feature
@@ -32,5 +32,26 @@ loadData(function(response) {
     const issDataKeys = Object.keys(jsonData[1]);
     for (var i = 0; i < 3; i++) {
         document.getElementById('iss-display' + (i + 1)).innerHTML += jsonData[1][issDataKeys[i]];
+    }
+});
+
+loadData('data/calendar.json', (response) => {
+    var jsonData = JSON.parse(response);
+
+    var days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+    for (var i = 0; i < days.length; i++) {
+        if (jsonData[0][days[i]].name != null) {
+            document.getElementById('cal-event' + (i + 1)).innerHTML += jsonData[0][days[i]].name;
+        }
+        else {
+            document.getElementById('cal-event' + (i + 1)).innerHTML += "No event";
+        }
+
+        if (jsonData[0][days[i]].importance != null) {
+            document.getElementById('cal-imp' + (i + 1)).innerHTML += jsonData[0][days[i]].importance;
+        }
+        else {
+            document.getElementById('cal-imp' + (i + 1)).innerHTML += "No importance";
+        }
     }
 });

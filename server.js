@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     getWeather((weatherData) => { 
         getISS((issData) => {
             getDate((dateData) => {
-                fs.readFile('GUI/data.json', (err, fileData) => {
+                fs.readFile('GUI/data/data.json', (err, fileData) => {
                     if (!err) {
                         var dataJson = JSON.parse(fileData);
 
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
                         dataJson[2].minutes = dateData[4]
 
 
-                        fs.writeFile('GUI/data.json', JSON.stringify(dataJson), () => {
+                        fs.writeFile('GUI/data/data.json', JSON.stringify(dataJson), () => {
                             // RENDER GUI
                             res.sendFile(path.join(__dirname + '/GUI/gui.html'));
                         });
