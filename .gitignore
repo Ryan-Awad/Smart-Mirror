@@ -1,3 +1,5 @@
 node_modules/*
+env/*
 .vscode/*
 package-lock.json
+rpi-ip.txt
