@@ -13,3 +13,28 @@ body {
 #feature h2 {
     font-weight: 400;
 }
+
+.calendar-div {
+    float: right;
+    padding-right: 50px;
+}
+
+#leftside-wrap {
+    position: absolute;
+    padding-left: 50px;
+}
+
+#name {
+    padding-left: 50px;
+    font-size: 35px;
+}
+
+#time-display {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+#date-display {
+    font-size: 30px;
+    font-weight: 300;
+}
