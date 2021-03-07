@@ -6,7 +6,7 @@ module.exports = {
     getISS: function(callback) {
         const logPrefix = '[LOG ~ ISS] - ';
 
-        console.log(`${logPrefix}Sending request to: http://api.open-notify.org/iss-now.json`);
+        //console.log(`${logPrefix}Sending request to: http://api.open-notify.org/iss-now.json`);
         request.get('http://api.open-notify.org/iss-now.json', (error, response, body) => {
             if (response.statusCode == 200 && !error) {
                 let jsonResponse = JSON.parse(body).iss_position;

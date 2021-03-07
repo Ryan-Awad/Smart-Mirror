@@ -48,7 +48,7 @@ loadData('data/calendar.json', (response) => {
         }
 
         if (jsonData[0][days[i]].importance != null) {
-            document.getElementById('cal-imp' + (i + 1)).innerHTML += jsonData[0][days[i]].importance;
+            document.getElementById('cal-imp' + (i + 1)).innerHTML += jsonData[0][days[i]].importance + ' / 3';
         }
         else {
             document.getElementById('cal-imp' + (i + 1)).innerHTML += "No importance";

@@ -13,7 +13,7 @@ module.exports = {
         const baseUrl = 'http://weather.service.msn.com/find.aspx?src=outlook';
         const urlParams = `&weadegreetype=${degreeType}&culture=${culture}&weasearchstr=${locationQuery}`;
         const url = baseUrl + urlParams;
-        console.log(`${logPrefix}Sending request to: ${url}`);
+        //console.log(`${logPrefix}Sending request to: ${url}`);
 
         var currentTemp;
         var currentFeels;
