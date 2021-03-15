@@ -2,5 +2,6 @@ node_modules/*
 env/*
 .vscode/*
 api_keys/*
+facial_recognition_WIN/*
 package-lock.json
 rpi-ip.txt
