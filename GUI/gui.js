@@ -57,7 +57,7 @@ function loadCalendarData(callback) {
             }
 
             if (jsonData[0][days[i]].importance != null) {
-                document.getElementById('cal-imp' + (i + 1)).innerHTML = 'Imporance: ' + jsonData[0][days[i]].importance + ' / 3';
+                document.getElementById('cal-imp' + (i + 1)).innerHTML = 'Importance: ' + jsonData[0][days[i]].importance + ' / 3';
             }
             else {
                 document.getElementById('cal-imp' + (i + 1)).innerHTML = 'Importance: No importance';
