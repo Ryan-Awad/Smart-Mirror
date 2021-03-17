@@ -73,7 +73,7 @@ function updateData() {
         loadCalendarData(() => {
             setTimeout(() => {
                 updateData();
-            }, 1000);
+            }, 2000);
         });
     })
 };
