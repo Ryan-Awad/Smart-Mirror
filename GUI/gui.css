@@ -19,6 +19,10 @@ body {
     padding-right: 50px;
 }
 
+.calendar-div h3 {
+    font-weight: 500;
+}
+
 #leftside-wrap {
     position: absolute;
     padding-left: 50px;
