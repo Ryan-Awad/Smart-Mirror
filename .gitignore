@@ -5,4 +5,4 @@ api_keys/*
 package-lock.json
 rpi-ip.txt
 TODO.txt
-src/*
+src/smart_mirror_calendar/
