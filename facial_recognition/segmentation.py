@@ -3,8 +3,10 @@ import cv2
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
 
+face_frame = 0
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
+    unlock_secs = 1 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -16,6 +18,17 @@ while True:
     )
 
     cv2.putText(frame, f"FPS: {fps}", (10, 15), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 1)
+
+    if face_frame >= unlock_secs * fps:
+        print("[SMART MIRROR UNLOCKED]")
+        pass # UNLOCK
+        # USEFUL INFO: https://www.raspberrypi.org/forums/viewtopic.php?t=281523
+    else: 
+        if faces != (): # face detected
+            face_frame += 1
+        else: # no face detected
+            face_frame = 0
+        
 
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 1)
