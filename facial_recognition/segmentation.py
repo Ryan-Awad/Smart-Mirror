@@ -1,23 +1,18 @@
-import cv2
+import cv2 # KEEP OPENCV VERSION TO 4.5.1.48 FOR THIS TO WORK
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
 
 face_frame = 0
+faces = ()
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
-    unlock_secs = 1 # amount of frames needed = fps * unlock_secs
+    unlock_secs = 50 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faces = face_cascade.detectMultiScale( # ** PLAY WITH THESE VALUES! **
-        image=gray_frame,
-        scaleFactor=1.1,
-        minNeighbors=5,
-        minSize=(100, 100)
-    )
-
-    cv2.putText(frame, f"FPS: {fps}", (10, 15), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 1)
+    if not face_frame % fps:
+        print('Face detected for:', face_frame / fps, 'seconds')
 
     if face_frame >= unlock_secs * fps:
         print("[SMART MIRROR UNLOCKED]")
@@ -28,6 +23,15 @@ while True:
             face_frame += 1
         else: # no face detected
             face_frame = 0
+
+    faces = face_cascade.detectMultiScale( # ** PLAY WITH THESE VALUES! **
+        image=gray_frame,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(100, 100)
+    )
+
+    cv2.putText(frame, f"FPS: {fps}", (10, 15), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 1)
         
 
     for (x, y, w, h) in faces:
