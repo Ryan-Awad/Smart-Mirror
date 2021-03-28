@@ -7,7 +7,7 @@ face_frame = 0
 faces = ()
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
-    unlock_secs = 50 # amount of frames needed = fps * unlock_secs
+    unlock_secs = 1 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
