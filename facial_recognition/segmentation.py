@@ -1,4 +1,5 @@
 import cv2 # KEEP OPENCV VERSION TO 4.5.1.48 FOR THIS TO WORK
+import os
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
@@ -16,7 +17,11 @@ while True:
 
     if face_frame >= unlock_secs * fps:
         print("[SMART MIRROR UNLOCKED]")
-        pass # UNLOCK
+        sleep_cmd = os.system('xset dpms force on') # UNLOCK
+        if sleep_cmd:
+            print('[ERROR : SCREEN SLEEP COMMAND INVALID]')
+        else:
+            break
         # USEFUL INFO: https://www.raspberrypi.org/forums/viewtopic.php?t=281523
     else: 
         if faces != (): # face detected
@@ -33,7 +38,6 @@ while True:
 
     cv2.putText(frame, f"FPS: {fps}", (10, 15), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 1)
         
-
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 1)
         cv2.putText(frame, 'Face', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
