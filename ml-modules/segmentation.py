@@ -12,7 +12,7 @@ face_label = 'Detected Face'
 face_bbox_color = (0, 255, 0)
 
 def voice_recog_process():
-    call(['python', 'speech_recog.py'], shell=True) # **CHANGE TO 'python3' FOR RASPBERRY PI
+    call('python speech_recog.py', shell=True) # **CHANGE TO "['python3 speech_recog.py']" FOR RASPBERRY PI
 
 voice_recog_thread = threading.Thread(target=voice_recog_process)
 
