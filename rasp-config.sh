@@ -1,3 +1,5 @@
+sudo apt-get install -y python-pyaudio
+
 sudo apt-get install -y libcblas-dev
 sudo apt-get install -y libhdf5-dev
 sudo apt-get install -y libhdf5-serial-dev
