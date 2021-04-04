@@ -1,2 +1,0 @@
-IDEA: minimize the window when bbox is green. unminimize when u detect for more than "detect_secs". 
-OR: always have the window minimized and make some text apear on the screen when it detects u for more than "detect_secs" and starts voice recog"
