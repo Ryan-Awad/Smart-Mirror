@@ -2,7 +2,6 @@ import cv2 # KEEP OPENCV VERSION TO 4.5.1.48 FOR THIS TO WORK
 import threading
 from pyautogui import size
 from subprocess import call
-from time import sleep
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
@@ -21,12 +20,12 @@ voice_recog_thread = threading.Thread(target=voice_recog_process)
 
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
-    unlock_secs = 2 # amount of frames needed = fps * unlock_secs
+    detect_secs = 2 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
     #frame = cv2.resize(frame, (800, 600))
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
-    if face_frame >= unlock_secs * fps: # START SPEECH RECOG
+    if face_frame >= detect_secs * fps: # START SPEECH RECOG
         if not voice_recog_thread.is_alive() and not face_detected:
             face_label = 'Listening...'
             face_bbox_color = (0, 0, 255)
