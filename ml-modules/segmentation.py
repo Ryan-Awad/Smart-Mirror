@@ -1,6 +1,6 @@
 import cv2 # KEEP OPENCV VERSION TO 4.5.1.48 FOR THIS TO WORK
-import os
 import threading
+from pyautogui import size
 from subprocess import call
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -10,28 +10,30 @@ face_frame = 0
 faces = ()
 face_label = 'Detected Face'
 face_bbox_color = (0, 255, 0)
+width, height = size()
 
 def voice_recog_process():
-    call('python speech_recog.py', shell=True) # **CHANGE TO "['python3 speech_recog.py']" FOR RASPBERRY PI
+    call('python speech_recog.py', shell=True) # **CHANGE TO 'python3 speech_recog.py' FOR RASPBERRY PI
 
 voice_recog_thread = threading.Thread(target=voice_recog_process)
 
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
-    unlock_secs = 1 # amount of frames needed = fps * unlock_secs
+    unlock_secs = 2 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
+    #frame = cv2.resize(frame, (800, 600))
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
     if face_frame >= unlock_secs * fps: # START SPEECH RECOG
         if not voice_recog_thread.is_alive():
             face_label = 'Listening...'
             face_bbox_color = (0, 0, 255)
+            # END THE THREAD HERE
             voice_recog_thread.start()
-            # ******* ERROR AFTER THREAD IS COMPLETE: RuntimeError: threads can only be started once. ********
     else: 
         if faces != (): # face detected
             face_frame += 1
-        else: # no face detected 
+        else: # no face detected
             face_frame = 0
 
     faces = face_cascade.detectMultiScale(
@@ -47,7 +49,9 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), face_bbox_color, 1)
         cv2.putText(frame, face_label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, face_bbox_color, 2)
 
-    cv2.imshow('SEGMENTATION CAM', frame)
+    cv2.imshow('SEGMENTATION', frame)
+    x, y, w, h = cv2.getWindowImageRect('SEGMENTATION')
+    cv2.moveWindow('SEGMENTATION', int((width/2) - (w/2)), int((height/3) - (h/3)))
 
     exit_key = cv2.waitKey(20) # ESC key 
     if exit_key == 27:
