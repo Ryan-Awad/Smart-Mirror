@@ -1,6 +1,9 @@
+// Run this script with the -s argument to run the server WITHOUT the facial detection module
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const {PythonShell} = require('python-shell');
+const {argv} = require('yargs');
 const {getValues} = require('./features/featureWorkers/featureRoot');
 const {update} = require('./features/featureWorkers/featureUpdater');
 
@@ -23,4 +26,11 @@ update(dataPath); // starts data updating sequence to keep data live
 
 app.listen(port, () => {
     console.log(`Smart Mirror web server running on http://127.0.0.1:${port}/\n\n`);
+
+    if (!Boolean(argv.s) && argv.s != 0) {
+        console.log('Facial detection module initiated.');
+        PythonShell.run('ml_modules/segmentation.py', null, (err) => {
+            if (err) console.log(`[ERROR : SEGMENTATION SCRIPT DID NOT START - ${err}]`);
+        });
+    }
 });

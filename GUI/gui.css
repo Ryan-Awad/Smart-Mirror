@@ -42,3 +42,15 @@ body {
     font-size: 30px;
     font-weight: 300;
 }
+
+#voice-recog {
+    font-weight: 300;
+    font-size: 25px;
+    position: absolute;
+    top: 145%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}

@@ -39,9 +39,15 @@ function loadBasicData(callback) {
             document.getElementById('iss-display' + (i + 1)).innerHTML = issSections[i] + ': ' + jsonData[1][issDataKeys[i]];
         }
 
+        // Voice recog feature
+        var command = jsonData[3].command;
+        var responseLine = jsonData[3].response;
+        document.getElementById('command').innerHTML = command;
+        document.getElementById('response').innerHTML = responseLine;
+
         callback();
     });
-}
+};
 
 function loadCalendarData(callback) {
     loadData('data/calendar.json', (response) => {
@@ -66,14 +72,14 @@ function loadCalendarData(callback) {
 
         callback();
     });
-}
+};
 
 function updateData() {
     loadBasicData(() => {
         loadCalendarData(() => {
             setTimeout(() => {
                 updateData();
-            }, 2000);
+            }, 500);
         });
-    })
+    });
 };

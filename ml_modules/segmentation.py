@@ -3,7 +3,7 @@ import threading
 from pyautogui import size
 from subprocess import call
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('ml_modules/haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
 
 face_frame = 0
@@ -14,7 +14,7 @@ face_bbox_color = (0, 255, 0)
 width, height = size()
 
 def voice_recog_process():
-    call('python speech_recog.py', shell=True) # **CHANGE TO 'python3 speech_recog.py' FOR RASPBERRY PI
+    call('python ml_modules/speech_recog.py', shell=True) # **CHANGE TO 'python3 speech_recog.py' FOR RASPBERRY PI
 
 voice_recog_thread = threading.Thread(target=voice_recog_process)
 

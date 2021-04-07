@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
+    "python-shell": "^3.0.0",
     "request": "^2.88.2",
     "which-country": "^1.0.0",
     "yargs": "^16.2.0"
