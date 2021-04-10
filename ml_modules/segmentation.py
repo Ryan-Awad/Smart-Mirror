@@ -20,7 +20,7 @@ voice_recog_thread = threading.Thread(target=voice_recog_process)
 
 while True:
     fps = video_capture.get(cv2.CAP_PROP_FPS)
-    detect_secs = 2 # amount of frames needed = fps * unlock_secs
+    detect_secs = 1 # amount of frames needed = fps * unlock_secs
     ret, frame = video_capture.read()
     #frame = cv2.resize(frame, (800, 600))
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)

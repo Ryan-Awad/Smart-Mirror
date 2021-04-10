@@ -1,19 +1,17 @@
 import speech_recognition as sr
 import json
+from speech_algorithm import algorithm
 
 r = sr.Recognizer()
 try:
     with sr.Microphone() as source:
         print('Listening')
         x = r.listen(source)
-        x = r.recognize_google(x)
-        y = 'Test response!'
-        print(f'You said: {x}')
-        print(y)
+        x = r.recognize_google(x, language='en-US')
+        y = algorithm(x)
 except sr.UnknownValueError:
     x = None
     y = "Sorry, I didn't quite get that..."
-    print(y)
 
 with open('GUI/data/data.json', mode='r') as data_read:
     data = json.loads(data_read.readline())

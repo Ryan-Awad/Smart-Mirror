@@ -24,14 +24,24 @@ const {argv} = require('yargs')
         describe: 'Set argument to the day you want to clear of event. Set to "all" to clear all days in the week.',
         type: 'string',
         nargs: 1
+    })
+    .option('p', {
+        alias: 'path',
+        describe: 'Set a specific path to execute this from. (Not recommended unless you are a developper)',
+        type: 'string',
+        nargs: 1
     });
 
+var path = argv.p;
+if (path == undefined) {
+    path = 'GUI/data/calendar.json'
+}
 
 var clearArg = argv.c;
 if (typeof clearArg == 'string') {
     clearArg = clearArg.toLowerCase();
     if (clearArg == 'all') {
-        fs.readFile('GUI/data/calendar.json', (err, data) => {
+        fs.readFile(path, (err, data) => {
             if (!err) {
                 var weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
                 var jsonData = JSON.parse(data);
@@ -40,7 +50,7 @@ if (typeof clearArg == 'string') {
                     jsonData[0][weekDays[i]].importance = null;
                 }
         
-                fs.writeFile('GUI/data/calendar.json', JSON.stringify(jsonData), (err) => {
+                fs.writeFile(path, JSON.stringify(jsonData), (err) => {
                     if (err) {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
                     }
@@ -54,13 +64,13 @@ if (typeof clearArg == 'string') {
         console.log('Successfully cleared all days.');
     }
     else {
-        fs.readFile('GUI/data/calendar.json', (err, data) => {
+        fs.readFile(path, (err, data) => {
             if (!err) {
                 var jsonData = JSON.parse(data);
                 jsonData[0][clearArg].name = null;
                 jsonData[0][clearArg].importance = null;
         
-                fs.writeFile('GUI/data/calendar.json', JSON.stringify(jsonData), (err) => {
+                fs.writeFile(path, JSON.stringify(jsonData), (err) => {
                     if (err) {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
                     }
@@ -86,7 +96,7 @@ else {
             console.log("Warning: Your importance needs to be between 1-3. Your importance value was set to null.");
         }
         
-        fs.readFile('GUI/data/calendar.json', (err, data) => {
+        fs.readFile(path, (err, data) => {
             if (!err) {
                 var jsonData = JSON.parse(data);
                 jsonData[0][day].name = eventName;
@@ -97,7 +107,7 @@ else {
                     jsonData[0][day].importance = importance;
                 }
         
-                fs.writeFile('GUI/data/calendar.json', JSON.stringify(jsonData), (err) => {
+                fs.writeFile(path, JSON.stringify(jsonData), (err) => {
                     if (err) {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
                     }

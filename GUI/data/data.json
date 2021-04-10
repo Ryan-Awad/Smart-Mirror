@@ -1,1 +1,1 @@
-[{"temp":"2 °C","feels":"1 °C","sky":"Clear","wind":"6 km/h North","humidity":"88%"},{"location":"the Oceans","lon":-168.8057,"lat":33.6796},{"day":7,"month":4,"year":2021,"hours":2,"minutes":"18"},{"command":"hello my name is Ryan.","response":"Test response!"}]
+[{"temp":"11 °C","feels":"11 °C","sky":"Cloudy","wind":"8 km/h Southwest","humidity":"70%"},{"location":"the Oceans","lon":156.6387,"lat":39.0835},{"day":10,"month":4,"year":2021,"hours":19,"minutes":"56"},{"command":null,"response":"Sorry, I didn't quite get that..."}]
