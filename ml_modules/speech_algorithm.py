@@ -30,8 +30,8 @@ def algorithm(x):
                         break
             else:
                 error[0] = False
-            # YOU CAN OPTIMIZE YOUR ALGORITHM BY TAKING THE FIRST 3 LETTERS OF THE DAY THAT YOU PICKED, INSTEAD OF USING THE FOR LOOP TO CONVERT.
-            days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'sunday', 'saturday']
+                
+            days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
             cal_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
             for i in range(len(days)):
                 if day == days[i]:
@@ -50,7 +50,7 @@ def algorithm(x):
         else:
             error = True
             clear = x[1]
-            args = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'sunday', 'saturday']
+            args = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
             cal_args = ['all', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
             for i in range(len(args)):
                 if clear == args[i]:
