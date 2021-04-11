@@ -3,8 +3,6 @@ import os
 # SAMPLE ADD COMMAND:       Monday Importance 3 Hello World
 # SAMPLE CLEAR COMMAND:     Clear Monday      ||      Clear All
 
-# ** IMPORTANT: SAYING "two" or "2" DOES NOT WORK. IT RECOGNIZES IT AS "TO". FIX! **
-
 def algorithm(x):
     try:
         x = x.lower().split(' ')
@@ -18,9 +16,13 @@ def algorithm(x):
             importance = x[2]
             event = ' '.join(x[3:])
 
+            # annoying patch to google detectin "to" instead of "two" or "2"
+            if importance == 'to': 
+                importance = '2'
+
             word_nums = ['zero', 'one', 'two', 'three']
             nums = [str(n) for n in range(0,4)] 
-            if importance not in nums: # REVIEW THIS VERY LINE
+            if importance not in nums: 
                 for i in range(len(word_nums)):
                     if importance == word_nums[i]:
                         importance = nums[i]
@@ -28,6 +30,7 @@ def algorithm(x):
                         break
             else:
                 error[0] = False
+            # YOU CAN OPTIMIZE YOUR ALGORITHM BY TAKING THE FIRST 3 LETTERS OF THE DAY THAT YOU PICKED, INSTEAD OF USING THE FOR LOOP TO CONVERT.
             days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'sunday', 'saturday']
             cal_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
             for i in range(len(days)):
