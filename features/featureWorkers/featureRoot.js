@@ -17,6 +17,7 @@ module.exports = {
                             dataJson[0].sky = weatherData[2];
                             dataJson[0].wind = weatherData[3];
                             dataJson[0].humidity = weatherData[4];
+                            dataJson[0].degreetype = weatherData[5];
                             
                             dataJson[1].location = issData[0];
                             dataJson[1].lon = issData[1];

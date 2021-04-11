@@ -8,13 +8,19 @@ try:
         print('Listening')
         x = r.listen(source)
         x = r.recognize_google(x, language='en-US')
+        print(f'You said: {x}')
         y = algorithm(x)
 except sr.UnknownValueError:
     x = None
     y = "Sorry, I didn't quite get that..."
 
 with open('GUI/data/data.json', mode='r') as data_read:
-    data = json.loads(data_read.readline())
+    if x:
+        x = x.capitalize()
+        if x[-1:] != '.':
+            x += '.'
+
+    data = json.loads(data_read.readline())    
     data[3] = {
         "command": x,
         "response": y

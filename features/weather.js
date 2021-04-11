@@ -25,8 +25,8 @@ module.exports = {
             if (response.statusCode == 200 && !error) {
                 let $ = cheerio.load(body);
 
-                currentTemp = $('current').attr('temperature') + ` °${degreeType}`;
-                currentFeels = $('current').attr('feelslike') + ` °${degreeType}`;
+                currentTemp = $('current').attr('temperature');
+                currentFeels = $('current').attr('feelslike');
                 currentSky = $('current').attr('skytext');
                 currentWind = $('current').attr('winddisplay');
                 currentHumidity = $('current').attr('humidity') + '%';
@@ -36,7 +36,8 @@ module.exports = {
                     currentFeels,
                     currentSky,
                     currentWind,
-                    currentHumidity
+                    currentHumidity,
+                    degreeType.toUpperCase()
                 ]);
             }
             else {

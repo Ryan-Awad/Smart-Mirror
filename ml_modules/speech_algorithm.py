@@ -10,33 +10,36 @@ def algorithm(x):
         cal_path = 'GUI/data/calendar.json'
 
         if x[0] != 'clear':
-            error = [True,True]
+            error = [True,True,True]
 
             day = x[0]
             importance = x[2]
-            event = ' '.join(x[3:])
+            event = ' '.join(x[3:]) # if no event is given, event = ''
 
-            # annoying patch to google detectin "to" instead of "two" or "2"
+            if event != '':
+                error[0] = False
+
+            # annoying patch to google detecting "to" instead of "two" or "2"
             if importance == 'to': 
                 importance = '2'
 
             word_nums = ['zero', 'one', 'two', 'three']
             nums = [str(n) for n in range(0,4)] 
             if importance not in nums: 
-                for i in range(len(word_nums)):
-                    if importance == word_nums[i]:
-                        importance = nums[i]
-                        error[0] = False
+                for (w_num, num) in zip(word_nums, nums):
+                    if importance == w_num:
+                        importance = num
+                        error[1] = False
                         break
             else:
-                error[0] = False
+                error[1] = False
                 
-            days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+            full_days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
             cal_days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-            for i in range(len(days)):
-                if day == days[i]:
-                    day = cal_days[i]
-                    error[1] = False
+            for (f_days, c_day) in zip(full_days, cal_days):
+                if day == f_days:
+                    day = c_day
+                    error[2] = False
                     break
             if True not in error:
                 if importance == '0':
@@ -52,9 +55,9 @@ def algorithm(x):
             clear = x[1]
             args = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
             cal_args = ['all', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-            for i in range(len(args)):
-                if clear == args[i]:
-                    clear = cal_args[i]
+            for (arg, c_arg) in zip(args, cal_args):
+                if clear == arg:
+                    clear = c_arg
                     error = False
                     break
             if not error:

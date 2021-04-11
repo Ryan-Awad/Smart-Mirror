@@ -26,8 +26,12 @@ function loadBasicData(callback) {
         document.getElementById('date-display').innerHTML = year + '-' + month + '-' + day;
         
         // Weather feature
+        jsonData[0]['temp'] += ` °${jsonData[0].degreetype}`;
+        jsonData[0]['feels'] += ` °${jsonData[0].degreetype}`;
+
         const weatherSections = ['Temperature', 'Feels Like', 'Sky', 'Wind', 'Humidity'];
         const weatherDataKeys = Object.keys(jsonData[0]);
+        weatherDataKeys.pop();
         for (var i = 0; i < 5; i++) {
             document.getElementById('weather-display' + (i + 1)).innerHTML = weatherSections[i] + ': ' + jsonData[0][weatherDataKeys[i]];
         }
@@ -79,7 +83,7 @@ function updateData() {
         loadCalendarData(() => {
             setTimeout(() => {
                 updateData();
-            }, 500);
+            }, 2000);
         });
     });
 };
