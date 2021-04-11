@@ -6,7 +6,8 @@
 ## **Made competely from scratch (<ins>WITHOUT</ins> MagicMirror²)**
 
 ### Runs on a Raspberry Pi 3 B+ 
-### Uses facial detection and voice recognition
+### Utilizes facial detection and voice recognition
+#### Built with a NodeJS and Python backend
 Note: Install in /~ directory on Raspberry Pi 
 
 <img src='images/rpi.png' width='300px'>
