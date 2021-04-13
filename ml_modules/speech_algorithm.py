@@ -14,7 +14,7 @@ def algorithm(x):
 
             day = x[0]
             importance = x[2]
-            event = ' '.join(x[3:]) # if no event is given, event = ''
+            event = ' '.join(x[3:]).capitalize() # if no event is given, event = ''
 
             if event != '':
                 error[0] = False
