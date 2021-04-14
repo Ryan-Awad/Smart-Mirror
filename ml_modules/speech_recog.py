@@ -8,7 +8,7 @@ try:
         print('Listening')
         x = r.listen(source)
         x = r.recognize_google(x, language='en-US')
-        print(f'You said: {x}')
+        print('You said: ' + str(x))
         y = algorithm(x)
 except sr.UnknownValueError:
     x = None
