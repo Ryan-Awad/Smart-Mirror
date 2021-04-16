@@ -6,17 +6,19 @@ module.exports = {
     getISS: function(callback) {
         const logPrefix = '[LOG ~ ISS] - ';
 
-        //console.log(`${logPrefix}Sending request to: https://api.wheretheiss.at/v1/satellites/25544`);
-        request.get('https://api.wheretheiss.at/v1/satellites/25544', (error, response, body) => {
+        //console.log(`${logPrefix}Sending request to: https://api.wheretheiss.at/v1/satellites/25544&units=kilometers`);
+        request.get('https://api.wheretheiss.at/v1/satellites/25544&units=kilometers', (error, response, body) => {
             if (response.statusCode == 200 && !error) {
                 let jsonResponse = JSON.parse(body);
-
-                let lon = parseFloat(jsonResponse.longitude);
-                let lat = parseFloat(jsonResponse.latitude);
-                let alt = parseFloat(jsonResponse.altitude);
-                let vel = parseFloat(jsonResponse.velocity);
+                
+                // ** LOOK INTO ADDING AN IFRAME TO A MAP WITH LON AND LAT **
+                let lon = parseFloat(jsonResponse.longitude).toFixed(4);
+                let lat = parseFloat(jsonResponse.latitude).toFixed(4);
+                let alt = parseFloat(jsonResponse.altitude).toFixed(2); // m
+                let vel = parseFloat(jsonResponse.velocity).toFixed(3); // km/h
                 let vis = jsonResponse.visibility;
                 let location = wc([lon, lat]);
+                vis = vis.charAt(0).toUpperCase() + vis.slice(1);
 
                 if (location == null) {
                     location = "the Oceans";
@@ -27,10 +29,10 @@ module.exports = {
 
                 callback([
                     location,
-                    lon.toFixed(4),
-                    lat.toFixed(4),
-                    alt.toFixed(4),
-                    vel.toFixed(4),
+                    lon,
+                    lat,
+                    alt,
+                    vel,
                     vis
                 ]);
             }
