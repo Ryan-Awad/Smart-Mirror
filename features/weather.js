@@ -8,13 +8,15 @@ module.exports = {
 
         const degreeType = 'C';
         const culture = 'en-US';
-        const locationQuery = 'Ontario, Canada';
+        const locationQuery = 'Kanata, Ottawa';
 
         const baseUrl = 'http://weather.service.msn.com/find.aspx?src=outlook';
         const urlParams = `&weadegreetype=${degreeType}&culture=${culture}&weasearchstr=${locationQuery}`;
         const url = baseUrl + urlParams;
         //console.log(`${logPrefix}Sending request to: ${url}`);
 
+        var currentSkyCode;
+        var currentIconURL;
         var currentTemp;
         var currentFeels;
         var currentSky;
@@ -24,7 +26,9 @@ module.exports = {
         request.get(url, (error, response, body) => {
             if (response.statusCode == 200 && !error) {
                 let $ = cheerio.load(body);
-
+                
+                currentSkyCode = $('current').attr('skycode');
+                currentIconURL = $('weather').attr('imagerelativeurl') + 'law/' + currentSkyCode + '.gif';
                 currentTemp = $('current').attr('temperature');
                 currentFeels = $('current').attr('feelslike');
                 currentSky = $('current').attr('skytext');
@@ -32,6 +36,7 @@ module.exports = {
                 currentHumidity = $('current').attr('humidity') + '%';
 
                 callback([
+                    currentIconURL,
                     currentTemp,
                     currentFeels,
                     currentSky,

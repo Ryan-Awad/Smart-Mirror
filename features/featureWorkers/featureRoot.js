@@ -12,12 +12,13 @@ module.exports = {
                         if (!err) {
                             var dataJson = JSON.parse(fileData);
 
-                            dataJson[0].temp = weatherData[0];
-                            dataJson[0].feels = weatherData[1];
-                            dataJson[0].sky = weatherData[2];
-                            dataJson[0].wind = weatherData[3];
-                            dataJson[0].humidity = weatherData[4];
-                            dataJson[0].degreetype = weatherData[5];
+                            dataJson[0].icon_url = weatherData[0];
+                            dataJson[0].temp = weatherData[1];
+                            dataJson[0].feels = weatherData[2];
+                            dataJson[0].sky = weatherData[3];
+                            dataJson[0].wind = weatherData[4];
+                            dataJson[0].humidity = weatherData[5];
+                            dataJson[0].degreetype = weatherData[6];
                             
                             dataJson[1].location = issData[0];
                             dataJson[1].lon = issData[1];

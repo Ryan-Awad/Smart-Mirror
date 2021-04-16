@@ -36,6 +36,8 @@ function loadBasicData(callback) {
             document.getElementById('weather-display' + (i + 1)).innerHTML = weatherSections[i] + ': ' + jsonData[0][weatherDataKeys[i]];
         }
 
+        document.getElementById('weather-icon').src = jsonData[0]['icon_url'];
+
         // ISS feature
         const issSections = ['Flying Over', 'Longitude', 'Latitude'];
         const issDataKeys = Object.keys(jsonData[1]);

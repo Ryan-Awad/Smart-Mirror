@@ -6,6 +6,8 @@ module.exports = {
     getISS: function(callback) {
         const logPrefix = '[LOG ~ ISS] - ';
 
+        // *** USE THIS API INSTEAD (HAS A LOT MORE STUFF): https://api.wheretheiss.at/v1/satellites/25544   ****
+
         //console.log(`${logPrefix}Sending request to: http://api.open-notify.org/iss-now.json`);
         request.get('http://api.open-notify.org/iss-now.json', (error, response, body) => {
             if (response.statusCode == 200 && !error) {
