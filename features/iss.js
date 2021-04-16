@@ -6,15 +6,16 @@ module.exports = {
     getISS: function(callback) {
         const logPrefix = '[LOG ~ ISS] - ';
 
-        // *** USE THIS API INSTEAD (HAS A LOT MORE STUFF): https://api.wheretheiss.at/v1/satellites/25544   ****
-
-        //console.log(`${logPrefix}Sending request to: http://api.open-notify.org/iss-now.json`);
-        request.get('http://api.open-notify.org/iss-now.json', (error, response, body) => {
+        //console.log(`${logPrefix}Sending request to: https://api.wheretheiss.at/v1/satellites/25544`);
+        request.get('https://api.wheretheiss.at/v1/satellites/25544', (error, response, body) => {
             if (response.statusCode == 200 && !error) {
-                let jsonResponse = JSON.parse(body).iss_position;
+                let jsonResponse = JSON.parse(body);
+
                 let lon = parseFloat(jsonResponse.longitude);
                 let lat = parseFloat(jsonResponse.latitude);
-                
+                let alt = parseFloat(jsonResponse.altitude);
+                let vel = parseFloat(jsonResponse.velocity);
+                let vis = jsonResponse.visibility;
                 let location = wc([lon, lat]);
 
                 if (location == null) {
@@ -26,8 +27,11 @@ module.exports = {
 
                 callback([
                     location,
-                    lon,
-                    lat
+                    lon.toFixed(4),
+                    lat.toFixed(4),
+                    alt.toFixed(4),
+                    vel.toFixed(4),
+                    vis
                 ]);
             }
             else {

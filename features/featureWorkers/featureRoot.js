@@ -23,6 +23,9 @@ module.exports = {
                             dataJson[1].location = issData[0];
                             dataJson[1].lon = issData[1];
                             dataJson[1].lat = issData[2];
+                            dataJson[1].alt = issData[3];
+                            dataJson[1].vel = issData[4];
+                            dataJson[1].vis = issData[5];
 
                             dataJson[2].day = dateData[0];
                             dataJson[2].month = dateData[1];

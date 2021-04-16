@@ -39,9 +39,9 @@ function loadBasicData(callback) {
         document.getElementById('weather-icon').src = jsonData[0]['icon_url'];
 
         // ISS feature
-        const issSections = ['Flying Over', 'Longitude', 'Latitude'];
+        const issSections = ['Flying Over', 'Longitude', 'Latitude', 'Altitude', 'Velocity', 'Visibility'];
         const issDataKeys = Object.keys(jsonData[1]);
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 6; i++) {
             document.getElementById('iss-display' + (i + 1)).innerHTML = issSections[i] + ': ' + jsonData[1][issDataKeys[i]];
         }
 
