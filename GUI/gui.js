@@ -29,19 +29,19 @@ function loadBasicData(callback) {
         jsonData[0]['temp'] += ` °${jsonData[0].degreetype}`;
         jsonData[0]['feels'] += ` °${jsonData[0].degreetype}`;
 
-        const weatherSections = ['Temperature', 'Feels Like', 'Sky', 'Wind', 'Humidity'];
+        const weatherSections = ['Temperature', 'Feels Like', 'Wind', 'Humidity']; // blank item is for the sky
         const weatherDataKeys = Object.keys(jsonData[0]);
-        weatherDataKeys.pop();
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 4; i++) {
             document.getElementById('weather-display' + (i + 1)).innerHTML = weatherSections[i] + ': ' + jsonData[0][weatherDataKeys[i]];
         }
 
         document.getElementById('weather-icon').src = jsonData[0]['icon_url'];
+        document.getElementById('skytext').innerHTML = jsonData[0]['sky'];
 
         // ISS feature
         jsonData[1]['lon'] += '°';
         jsonData[1]['lat'] += '°';
-        jsonData[1]['alt'] += ' m';
+        jsonData[1]['alt'] += ' km';
         jsonData[1]['vel'] += ' km/h';
 
         const issSections = ['Flying Over', 'Longitude', 'Latitude', 'Altitude', 'Velocity', 'Visibility'];
