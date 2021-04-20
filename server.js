@@ -37,6 +37,6 @@ app.listen(port, () => {
     }
 
     if (!Boolean(argv.w) && argv.w != 0) {
-        exec('./startup.sh');
+        exec('sh startup.sh');
     }
 });
