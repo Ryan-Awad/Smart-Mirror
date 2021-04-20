@@ -2,7 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const {exec} = require('shelljs');
+const {fork} = require('child_process');
 const {PythonShell} = require('python-shell');
 const {argv} = require('yargs');
 const {getValues} = require('./features/featureWorkers/featureRoot');
@@ -37,6 +37,9 @@ app.listen(port, () => {
     }
 
     if (!Boolean(argv.w) && argv.w != 0) {
-        exec('sh startup.sh');
+        const startupProcess = fork('./startup.js');
+        startupProcess.on('message', (msg) => {
+            console.log(msg);
+        });
     }
 });
