@@ -2,6 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const {exec} = require('shelljs');
 const {PythonShell} = require('python-shell');
 const {argv} = require('yargs');
 const {getValues} = require('./features/featureWorkers/featureRoot');
@@ -33,5 +34,9 @@ app.listen(port, () => {
             if (err) console.log(`[ERROR : SEGMENTATION SCRIPT DID NOT START - ${err}]`);
             console.log(results);
         });
+    }
+
+    if (!Boolean(argv.w) && argv.w != 0) {
+        exec('./startup.sh');
     }
 });

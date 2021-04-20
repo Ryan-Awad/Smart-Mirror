@@ -8,7 +8,7 @@ body {
 hr {
     height: 1px;
     border: none;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.164);
 }
 
 #feature p {
@@ -27,6 +27,11 @@ hr {
 
 .calendar-div h3 {
     font-weight: 500;
+}
+
+.calendar-div div {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #leftside-wrap {
@@ -53,8 +58,7 @@ hr {
     font-weight: 300;
     font-size: 25px;
     position: absolute;
-    /*top: 70%;*/
-    top: 145%;
+    top: 70%;
     margin-left: auto;
     margin-right: auto;
     left: 0;
