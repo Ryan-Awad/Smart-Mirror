@@ -8,7 +8,7 @@ module.exports = {
             fs.writeFile(dataPath, JSON.stringify(jsonData), () => {
                 setTimeout(() => {
                     module.exports.update(dataPath);
-                }, 5000);
+                }, 2000);
             });
         });
     }
