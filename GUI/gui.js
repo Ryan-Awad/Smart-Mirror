@@ -90,7 +90,7 @@ function updateData() {
         loadCalendarData(() => {
             setTimeout(() => {
                 updateData();
-            }, 2000);
+            }, 2500);
         });
     });
 };

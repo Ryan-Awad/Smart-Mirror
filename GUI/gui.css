@@ -56,12 +56,8 @@ hr {
 
 #voice-recog {
     font-weight: 300;
-    font-size: 25px;
+    font-size: 21px;
     position: absolute;
-    top: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+    top: 77%;
     text-align: center;
 }
