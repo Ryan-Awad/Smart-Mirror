@@ -41,5 +41,9 @@ app.listen(port, () => {
         startupProcess.on('message', (msg) => {
             console.log(msg);
         });
+
+        startupProcess.on('error', (err) => {
+            console.log(`[ERROR : ISSUE IN STARTUP SCRIPT - ${err}]`);
+        });
     }
 });
