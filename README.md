@@ -9,6 +9,7 @@
  - ### Runs on a Raspberry Pi 3 B+ 
  - ### Utilizes facial detection and voice recognition
  - ### Built with a NodeJS and Python backend
+ - ### Mirror display size: 900x1440
 <br>
 Note: Install in /~ directory on Raspberry Pi 
 
