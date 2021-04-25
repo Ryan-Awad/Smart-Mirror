@@ -11,7 +11,7 @@ faces = ()
 face_detected = False
 
 def voice_recog_process():
-    call('python ml_modules/speech_recog.py', shell=True) # **CHANGE TO 'python3 speech_recog.py' FOR RASPBERRY PI
+    call('python3 ml_modules/speech_recog.py', shell=True) # **CHANGE TO 'python3 speech_recog.py' FOR RASPBERRY PI
 
 voice_recog_thread = threading.Thread(target=voice_recog_process)
 
