@@ -1,7 +1,6 @@
 import cv2 # KEEP OPENCV VERSION TO 4.5.1.48 FOR THIS TO WORK
 import threading
 import json
-from pyautogui import size
 from subprocess import call
 
 face_cascade = cv2.CascadeClassifier('ml_modules/haarcascade_frontalface_default.xml')
