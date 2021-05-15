@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Linux-4d4d4d?logo=Linux)
 
 ## **Made competely from scratch (<ins>WITHOUT</ins> MagicMirror²)**
-### Note: Previously utilized facial detection, but has now been removed due to overheating issues. 
+#### (Previously utilized facial detection, but has now been removed due to overheating issues.)
 
  - ### Runs on a Raspberry Pi 3 B+ 
  - ### Utilizes voice recognition
