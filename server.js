@@ -13,7 +13,7 @@ const port = 3000;
 
 app.use(express.static(__dirname + '/GUI'));
 
-let dataPath = 'GUI/data/data.json';
+const dataPath = 'GUI/data/data.json';
 app.get('/', (req, res) => {
     getValues(dataPath, (jsonData) => {
         fs.writeFile(dataPath, JSON.stringify(jsonData), () => {
