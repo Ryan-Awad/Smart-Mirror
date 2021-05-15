@@ -113,7 +113,8 @@ function updateData() {
         loadCalendarData(() => {
             setTimeout(() => {
                 updateData();
-            }, 2000);
+                console.log(Math.random());
+            }, 100);
         });
     });
 };
