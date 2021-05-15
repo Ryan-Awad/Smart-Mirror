@@ -29,9 +29,9 @@ app.listen(port, () => {
     console.log(`Smart Mirror web server running on http://127.0.0.1:${port}/\n\n`);
 
     if (!Boolean(argv.s) && argv.s != 0) {
-        console.log('Facial detection module initiating.');
-        PythonShell.run('ml_modules/segmentation.py', null, (err, results) => {
-            if (err) console.log(`[ERROR : SEGMENTATION SCRIPT DID NOT START - ${err}]`);
+        console.log('Speech recognition module initiating.');
+        PythonShell.run('ml_modules/speech_recog.py', null, (err, results) => {
+            if (err) console.log(`[ERROR : VOICE RECOGNITION SCRIPT DID NOT START - ${err}]`);
             console.log(results);
         });
     }
