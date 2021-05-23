@@ -15,7 +15,9 @@ updateData();
 
 function loadBasicData(callback) {
     loadData('data/data.json', (response) => {
+        console.log('Getting Basic Data');
         if (Boolean(response)) {
+            console.log('Basic Data is TRUE');
             let jsonData = JSON.parse(response);
 
             // Time feature
@@ -59,7 +61,9 @@ function loadBasicData(callback) {
 
 function loadCalendarData(callback) {
     loadData('data/calendar.json', (response) => {
+        console.log('Getting Cal Data');
         if (Boolean(response)) {
+            console.log('Cal Data is TRUE');
             let jsonData = JSON.parse(response);
 
             let days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
@@ -86,7 +90,9 @@ function loadCalendarData(callback) {
 
 function loadSpeechData(callback) {
     loadData('data/data.json', (response) => {
+        console.log('Getting Speech Data');
         if (Boolean(response)) {
+            console.log('Speech Data is TRUE');
             let jsonData = JSON.parse(response);
 
             // Voice recog feature
