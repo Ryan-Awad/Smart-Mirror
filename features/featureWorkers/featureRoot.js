@@ -36,7 +36,13 @@ module.exports = {
                             callback(dataJson);
                         }
                         else {
-                            console.log(`[DATA FETCH ERROR : ${err}]`);
+                            if (!Boolean(fileData)) {
+                                console.log('JSON FORMAT ERROR!')
+                            }
+
+                            if (err) {
+                                console.log(`[DATA FETCH ERROR : ${err}]`);
+                            }
                         }
                     });
                 });

@@ -1,4 +1,4 @@
-// Run this script with the -s argument to run the server WITHOUT the facial detection module
+// Run this script with the -s argument to run the server WITHOUT the speech detection module
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -15,12 +15,9 @@ app.use(express.static(__dirname + '/GUI'));
 
 const dataPath = 'GUI/data/data.json';
 app.get('/', (req, res) => {
-    getValues(dataPath, (jsonData) => {
-        fs.writeFile(dataPath, JSON.stringify(jsonData), () => {
-            // RENDER GUI
-            res.sendFile(path.join(__dirname + '/GUI/gui.html'));
-        });
-    });
+
+    // RENDER GUI
+    res.sendFile(path.join(__dirname + '/GUI/gui.html'));
 });
 
 update(dataPath); // starts data updating sequence to keep data live
