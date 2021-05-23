@@ -15,9 +15,7 @@ updateData();
 
 function loadBasicData(callback) {
     loadData('data/data.json', (response) => {
-        console.log('Getting Basic Data');
         if (Boolean(response)) {
-            console.log('Basic Data is TRUE');
             let jsonData = JSON.parse(response);
 
             // Time feature
@@ -54,6 +52,9 @@ function loadBasicData(callback) {
                 document.getElementById('iss-display' + (i + 1)).innerHTML = issSections[i] + ': ' + jsonData[1][issDataKeys[i]];
             }
         }
+        else {
+            console.log('BASIC DATA IS FALSE');
+        }
 
         callback();
     });
@@ -61,9 +62,7 @@ function loadBasicData(callback) {
 
 function loadCalendarData(callback) {
     loadData('data/calendar.json', (response) => {
-        console.log('Getting Cal Data');
         if (Boolean(response)) {
-            console.log('Cal Data is TRUE');
             let jsonData = JSON.parse(response);
 
             let days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
@@ -83,6 +82,9 @@ function loadCalendarData(callback) {
                 }
             }
         }
+        else {
+            console.log('CAL DATA IS FALSE');
+        }
 
         callback();
     });
@@ -90,9 +92,7 @@ function loadCalendarData(callback) {
 
 function loadSpeechData(callback) {
     loadData('data/data.json', (response) => {
-        console.log('Getting Speech Data');
         if (Boolean(response)) {
-            console.log('Speech Data is TRUE');
             let jsonData = JSON.parse(response);
 
             // Voice recog feature
@@ -100,6 +100,9 @@ function loadSpeechData(callback) {
             let responseLine = jsonData[3].response;
             document.getElementById('command').innerHTML = command;
             document.getElementById('response').innerHTML = responseLine;
+        } 
+        else {
+            console.log('SPEECH DATA IS FALSE');
         }
 
         callback();
