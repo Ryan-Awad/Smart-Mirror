@@ -10,7 +10,7 @@ function loadData(path, callback) {
     xobj.send(null);
 };
 
-updateSpeechData();
+//updateSpeechData();
 updateData();
 
 function loadBasicData(callback) {
