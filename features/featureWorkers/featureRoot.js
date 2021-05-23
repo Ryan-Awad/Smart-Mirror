@@ -9,7 +9,7 @@ module.exports = {
             getISS((issData) => {
                 getDate((dateData) => {
                     fs.readFile(dataPath, (err, fileData) => {
-                        if (!err) {
+                        if (!err && Boolean(fileData)) {
                             var dataJson = JSON.parse(fileData);
 
                             dataJson[0].icon_url = weatherData[0];
