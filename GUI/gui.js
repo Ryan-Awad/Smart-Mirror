@@ -109,6 +109,7 @@ function loadSpeechData(callback) {
     });
 };
 
+/*
 function updateSpeechData() {
     loadSpeechData(() => {
         setTimeout(() => {
@@ -116,13 +117,16 @@ function updateSpeechData() {
         }, 100);
     });
 };
+*/
 
 function updateData() {
     loadBasicData(() => {
         loadCalendarData(() => {
-            setTimeout(() => {
-                updateData();
-            }, 100);
+            loadSpeechData(() => {
+                setTimeout(() => {
+                    updateData();
+                }, 100);
+            });
         });
     });
 };
