@@ -1,4 +1,3 @@
-const { clear } = require('console');
 const fs = require('fs');
 const {argv} = require('yargs')
     .option('d', {

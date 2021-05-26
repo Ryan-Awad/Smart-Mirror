@@ -2,19 +2,30 @@ import speech_recognition as sr
 import json
 from speech_algorithm import algorithm
 
+aura_called = False
+
 while True:
     r = sr.Recognizer()
     try:
         with sr.Microphone() as source:
-            print('Listening')
             x = r.listen(source)
             x = r.recognize_google(x, language='en-US')
-            print('You said: ' + str(x))
-            y = algorithm(x)
+            y = None
+            if str(x).upper() == 'AURA' and not aura_called:
+                y = 'Listening'
+                aura_called = True
+            elif aura_called:
+                y = algorithm(x)
+                aura_called = False
     except sr.UnknownValueError:
-        x = None
-        y = "Sorry, I didn't quite get that..."
+        if aura_called:
+            x = None
+            y = "Sorry, I didn't quite get that..."
+        else:
+            x = None
+            y = None
 
+    # writing the speech data to data.json
     with open('GUI/data/data.json', mode='r') as data_read:
         if x:
             x = x.capitalize()
@@ -29,4 +40,3 @@ while True:
 
     with open('GUI/data/data.json', mode='w') as data_write:
         json.dump(data, data_write)
-        print("Wrote speech recog to data.json!")
