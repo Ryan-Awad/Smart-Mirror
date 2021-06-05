@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0",
+    "name": "Smart Mirror Mobile App",
+    "app-name": "Smart Mirror Mobile App",
+    "package-name": "static_app",
+    "project-type": "static",
+    "icon": "./assets/icon/icon.png",
+    "dist-path": "./dist",
+    "permission": [
+        "android.permission.INTERNET"
+    ],
+    "description": "",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "build": "androidjs build"
+    },
+    "project-name": "Smart Mirror Mobile App",
+    "theme": {
+        "fullScreen": true
+    }
+}
