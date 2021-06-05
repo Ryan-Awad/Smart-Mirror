@@ -3,7 +3,7 @@
   "name": "smart-mirror-mobile-app",
   "app-name": "Smart Mirror Mobile App",
   "package-name": "smartmirrormobileapp",
-  "project-type": "static",
+  "project-type": "webview",
   "icon": "./assets/icon/icon.png",
   "dist-path": "./dist",
   "permission": [
