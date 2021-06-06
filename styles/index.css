@@ -1,0 +1,3 @@
+input:not(#clearCheckbox) {
+    display: block;
+}

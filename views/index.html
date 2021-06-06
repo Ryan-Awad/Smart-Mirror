@@ -1,17 +1,39 @@
 <html>
 <head>
     <script src="../assets/androidjs.js"></script>
+    <link rel='stylesheet' href='../styles/index.css'/>
 </head>
 <body>
     <h1>Smart Mirror Mobile App</h1>
 
-    <input type='input' id='ip' placeholder="Smart Mirror's IPv4 Address"/><br><br>
-    <input type='number' id='port' value='3000' min='1' max='64738' placeholder="Smart Mirror's Port (Default: 3000)"/><br><br>
-    <button type='button' onclick='connect()'>Connect to Smart Mirror</button>
+    <input type='input' id='ip' placeholder="Smart Mirror's IPv4 Address"/><br>
+    <input type='number' id='port' value='3000' min='1' max='64738' placeholder="Port (Default: 3000)"/><br>
+
+    <label for='days'>Select Day:</label>
+    <select name='days' id='days'>
+        <option value='mon'>Monday</option>
+        <option value='tue'>Tuesday</option>
+        <option value='wed'>Wednesday</option>
+        <option value='thu'>Thursday</option>
+        <option value='fri'>Friday</option>
+        <option value='sat'>Saturday</option>
+        <option value='sun'>Sunday</option>
+    </select><br>
+
+    <input type='checkbox' id='clearCheckbox' onchange='checkClear()'/>
+    <label>Clear</label><br><br>
+    <!-- ADD 'ALL' OPTION-->
+
+    <div id='addInputsDiv'>
+        <input type='input' id='eventName' name='addInput' placeholder='Event Name'/><br>
+        <input type='number' id='importance' name='addInput' value='0' min='0' max='3' placeholder='Importance [0-3]'/><br>
+    </div>
+
+    <button type='button' onclick='send()'>Connect to Smart Mirror</button>
 
     <script src='../scripts/index.js'></script>
 </body>
 <script>
-    
+    // FRONT END CODE HERE . . .
 </script>
 </html>
