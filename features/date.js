@@ -1,13 +1,13 @@
 module.exports = {
     getDate: function(callback) {
-        var dateObj = new Date();
+        let dateObj = new Date();
 
-        var day = dateObj.getDate();
-        var month = dateObj.getMonth() + 1;
-        var year = dateObj.getFullYear();
+        let day = dateObj.getDate();
+        let month = dateObj.getMonth() + 1;
+        let year = dateObj.getFullYear();
 
-        var hours = dateObj.getHours();
-        var minutes = ('0' + dateObj.getMinutes()).slice(-2);
+        let hours = dateObj.getHours();
+        let minutes = ('0' + dateObj.getMinutes()).slice(-2);
 
         callback([
             day,

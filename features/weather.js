@@ -15,13 +15,13 @@ module.exports = {
         const url = baseUrl + urlParams;
         //console.log(`${logPrefix}Sending request to: ${url}`);
 
-        var currentSkyCode;
-        var currentIconURL;
-        var currentTemp;
-        var currentFeels;
-        var currentSky;
-        var currentWind;
-        var currentHumidity;
+        let currentSkyCode;
+        let currentIconURL;
+        let currentTemp;
+        let currentFeels;
+        let currentSky;
+        let currentWind;
+        let currentHumidity;
 
         request.get(url, (error, response, body) => {
             if (response.statusCode == 200 && !error) {
