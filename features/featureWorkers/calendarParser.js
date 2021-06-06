@@ -12,7 +12,7 @@ module.exports = {
             event = body.event;
             importance = body.importance;
 
-            cmdLine = `node cal.js -d ${day} -n ${event}`;
+            cmdLine = `node cal.js -d ${day} -n "${event}"`;
             if (importance != 0) {
                 cmdLine += ` -i ${importance}`;
             }
