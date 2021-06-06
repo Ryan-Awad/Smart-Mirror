@@ -32,16 +32,26 @@ function send() {
     xobj.send(body);
 }
 
+
 function checkClear() {
     let clearCheckbox = document.getElementById('clearCheckbox');
-    let addInputsDiv = document.getElementById('addInputsDiv').getElementsByTagName("*");
+    let addInputsDiv = document.getElementById('addInputsDiv').getElementsByTagName('*');
+    let daysSelect = document.getElementById('days');
+    let allOption;
     if (clearCheckbox.checked) {
         for (let i = 0; i < addInputsDiv.length; i++) {
             addInputsDiv[i].style.display = 'none';
         }
+
+        allOption = document.createElement('option');
+        allOption.value = 'all';
+        allOption.text = 'All';
+        daysSelect.appendChild(allOption);
     } else {
         for (let i = 0; i < addInputsDiv.length; i++) {
             addInputsDiv[i].style.display = 'block';
         } 
+
+        daysSelect.removeChild(daysSelect.childNodes[daysSelect.childNodes.length - 1]);
     }
 }
