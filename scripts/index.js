@@ -1,4 +1,7 @@
 function send() {
+    document.getElementById('output').innerHTML = 'Connecting to Smart Mirror...';
+    document.getElementById('loader').style.display = 'block'; // display the loader
+
     let ip = document.getElementById('ip').value;
     let port = document.getElementById('port').value;
 
@@ -25,17 +28,22 @@ function send() {
         xobj.open('POST',`http://${ip}:${port}/calendar-api`, true);
         xobj.setRequestHeader('Content-Type', 'application/json');
         xobj.onreadystatechange = function() {
+            document.getElementById('loader').style.display = 'none'; // hide the loader
             if (xobj.readyState == 4 && xobj.status == '200') {
                 document.getElementById('output').innerHTML = xobj.responseText; // Calendar successfully edited.
             } else {
-                document.getElementById('output').innerHTML = 'Something went wrong. Unable to connect to Smart Mirror.<br> Code:' + xobj.status;
+                document.getElementById('output').innerHTML = 'Something went wrong. Unable to connect to Smart Mirror.';
+                if (xobj.status != 0) {
+                    document.getElementById('output').innerHTML += '<br>Code: ' + xobj.status;
+                }
             }
         }
 
         xobj.send(body);
     } catch (e) {
         if (e instanceof DOMException) {
-            document.getElementById('output').innerHTML = 'Invalid Connection. Make sure the IPv4 address and port is valid.';
+            document.getElementById('output').innerHTML = 'Invalid Fields. Make sure the IPv4 address and port is valid.';
+            document.getElementById('loader').style.display = 'none'; // hide the loader
         }
     }
 }
