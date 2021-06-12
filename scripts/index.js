@@ -20,16 +20,24 @@ function send() {
 
     body = JSON.stringify(body);
 
-    let xobj = new XMLHttpRequest();
-    xobj.open('POST',`http://${ip}:${port}/calendar-api`, true);
-    xobj.setRequestHeader('Content-Type', 'application/json');
-    xobj.onreadystatechange = function() {
-        if (xobj.readyState == 4 && xobj.status == '200') {
-            alert(xobj.responseText); // ** CHANGE THIS **
+    try {
+        let xobj = new XMLHttpRequest();
+        xobj.open('POST',`http://${ip}:${port}/calendar-api`, true);
+        xobj.setRequestHeader('Content-Type', 'application/json');
+        xobj.onreadystatechange = function() {
+            if (xobj.readyState == 4 && xobj.status == '200') {
+                document.getElementById('output').innerHTML = xobj.responseText; // Calendar successfully edited.
+            } else {
+                document.getElementById('output').innerHTML = 'Something went wrong. Unable to connect to Smart Mirror.<br> Code:' + xobj.status;
+            }
+        }
+
+        xobj.send(body);
+    } catch (e) {
+        if (e instanceof DOMException) {
+            document.getElementById('output').innerHTML = 'Invalid Connection. Make sure the IPv4 address and port is valid.';
         }
     }
-
-    xobj.send(body);
 }
 
 

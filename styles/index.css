@@ -1,3 +1,81 @@
+/*
+Light sage green: #cedec4
+Light blue: #B4C4E6
+Dark blue grey: #87989f
+Darker blue grey: #798a91
+DARKER blue grey: #68777c
+*/
+
+body {
+    background-color: #cedec4;
+    font-family: 'Roboto';
+}
+
+h1 {
+    font-weight: lighter;
+}
+
+input {
+    background-color: #a6b7c0;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #3f4142;
+    font-size: 15px;
+    color: black;
+}
+
+button {
+    background-color: #87989f;
+    padding: 7px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #2d2e2e;
+    font-size: 15px;
+    color: #2d2e2e;
+}
+
+button:active {
+    background-color: #6e7e85;
+    border-color: #3f4142; 
+    color: black;
+}
+
 input:not(#clearCheckbox) {
     display: block;
+}
+
+label {
+    font-size: 15px;
+}
+
+#clearCheckbox {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 3px;
+}
+
+#days {
+    background-color: #a6b7c0;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #3f4142;
+    font-size: 15px;
+    color: black;
+    border-width: 2px;
+}
+
+#port {
+    width: 100px;
+}
+
+#ip, #eventName, #importance {
+    width: 270px;
+}
+
+#output {
+    font-size: 20px;
 }
