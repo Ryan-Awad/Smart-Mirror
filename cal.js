@@ -54,15 +54,13 @@ if (typeof clearArg == 'string') {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
                     }
                 });
-            }
-            else {
+            } else {
                 console.log(`[CALENDAR DATA FETCH ERROR : ${err}]`);
             }
         });
         
         console.log('Successfully cleared all days.');
-    }
-    else {
+    } else {
         fs.readFile(path, (err, data) => {
             if (!err) {
                 var jsonData = JSON.parse(data);
@@ -74,16 +72,14 @@ if (typeof clearArg == 'string') {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
                     }
                 });
-            }
-            else {
+            } else {
                 console.log(`[CALENDAR DATA FETCH ERROR : ${err}]`);
             }
         });
 
         console.log('Successfully cleared event for selected day.');
     }
-}
-else {
+} else {
     var day = argv.d.toLowerCase();
     var eventName = argv.n;
     var importance;
@@ -101,26 +97,22 @@ else {
                 jsonData[0][day].name = eventName;
                 if (importance == undefined) {
                     jsonData[0][day].importance = null;
-                }
-                else {
+                } else {
                     jsonData[0][day].importance = importance;
                 }
         
                 fs.writeFile(path, JSON.stringify(jsonData), (err) => {
                     if (err) {
                         console.log(`[ERROR WRITING TO CALENDAR : ${err}`);
-                    }
-                    else {
+                    } else {
                         console.log('Successfully added event to calendar.');
                     }
                 });
-            }
-            else {
+            } else {
                 console.log(`[CALENDAR DATA FETCH ERROR : ${err}]`);
             }
         });
-    }
-    else {
+    } else {
         console.log('Error! You forgot to specify an event name or a day for the event.\nTry "node edit-calendar.js --help" for more information.');
     }
 }

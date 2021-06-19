@@ -44,8 +44,7 @@ module.exports = {
                     currentHumidity,
                     degreeType.toUpperCase()
                 ]);
-            }
-            else {
+            } else {
                 // ADD A WAY TO DISPLAY ON THE MIRROR THAT THERE WAS AN ERROR
                 console.log(`[Error : ${error}]`);
                 console.log(`Status Code: ${response.statusCode}`);

@@ -10,7 +10,7 @@ module.exports = {
                 getDate((dateData) => {
                     fs.readFile(dataPath, (err, fileData) => {
                         if (!err && Boolean(fileData)) {
-                            var dataJson = JSON.parse(fileData);
+                            let dataJson = JSON.parse(fileData);
 
                             dataJson[0].icon_url = weatherData[0];
                             dataJson[0].temp = weatherData[1];
@@ -34,8 +34,7 @@ module.exports = {
                             dataJson[2].minutes = dateData[4];
 
                             callback(dataJson);
-                        }
-                        else {
+                        } else {
                             if (!Boolean(fileData)) {
                                 console.log('JSON FORMAT ERROR!')
                             }

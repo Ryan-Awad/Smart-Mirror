@@ -5,6 +5,8 @@ function loadData(path, callback) {
     xobj.onreadystatechange = function() {
         if (xobj.readyState == 4 && xobj.status == '200') {
             callback(xobj.responseText);
+        } else {
+            console.log(`[THERE WAS AN ERROR WHEN SENDING A REQUEST TO ${path}]`);
         }
     }
     xobj.send(null);
@@ -51,8 +53,7 @@ function loadBasicData(callback) {
             for (let i = 0; i < 6; i++) {
                 document.getElementById('iss-display' + (i + 1)).innerHTML = issSections[i] + ': ' + jsonData[1][issDataKeys[i]];
             }
-        }
-        else {
+        } else {
             console.log('BASIC DATA IS FALSE');
         }
 
@@ -81,8 +82,7 @@ function loadCalendarData(callback) {
                     document.getElementById('cal-imp' + (i + 1)).innerHTML = 'Importance: No importance';
                 }
             }
-        }
-        else {
+        } else {
             console.log('CAL DATA IS FALSE');
         }
 
@@ -100,8 +100,7 @@ function loadSpeechData(callback) {
             let responseLine = jsonData[3].response;
             document.getElementById('command').innerHTML = command;
             document.getElementById('response').innerHTML = responseLine;
-        } 
-        else {
+        } else {
             console.log('SPEECH DATA IS FALSE');
         }
 

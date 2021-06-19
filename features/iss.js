@@ -22,8 +22,7 @@ module.exports = {
 
                 if (location == null) {
                     location = "the Oceans";
-                }
-                else {
+                } else {
                     location = cc.findCountry({a3: location}).name;
                 }
 
@@ -35,8 +34,7 @@ module.exports = {
                     vel,
                     vis
                 ]);
-            }
-            else {
+            } else {
                 // ADD A WAY TO DISPLAY ON THE MIRROR THAT THERE WAS AN ERROR
                 console.log(`[Error : ${error}]`);
                 console.log(`Status Code: ${response.statusCode}`);
