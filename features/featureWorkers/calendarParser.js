@@ -11,6 +11,10 @@ module.exports = {
         } else {
             event = body.event;
             importance = body.importance;
+            
+            // XSS Protection
+            event = event.replace(/</g, '&lt');
+            event = event.replace(/>/g, '&gt');
 
             cmdLine = `node cal.js -d ${day} -n "${event}"`;
             if (importance != 0) {
