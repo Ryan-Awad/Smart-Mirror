@@ -5,8 +5,6 @@ function loadData(path, callback) {
     xobj.onreadystatechange = function() {
         if (xobj.readyState == 4 && xobj.status == '200') {
             callback(xobj.responseText);
-        } else {
-            console.log(`[THERE WAS AN ERROR WHEN SENDING A REQUEST TO ${path}]`);
         }
     }
     xobj.send(null);
