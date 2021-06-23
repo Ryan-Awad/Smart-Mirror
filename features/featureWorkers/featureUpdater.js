@@ -8,7 +8,7 @@ module.exports = {
             fs.writeFile(dataPath, JSON.stringify(jsonData), () => {
                 setTimeout(() => {
                     module.exports.update(dataPath);
-                }, 2000);
+                }, 4000); // updates the data every 4 seconds
             });
         });
     }
