@@ -13,6 +13,8 @@
 
 
 <br>
+
+### **To install, run the `config.sh` file**
 Note: Install in /~ directory on Raspberry Pi 
 
 <img src='images/rpi.png' width='300px'>
