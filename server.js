@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const {fork, exec} = require('child_process');
 const {PythonShell} = require('python-shell');
 const {argv} = require('yargs');
@@ -11,6 +12,10 @@ const {parseCalBody} = require('./features/featureWorkers/calendarParser');
 
 const app = express();
 const port = 3000;
+var token;
+fs.readFile('auth/token.json', (err, data) => {
+    token = JSON.parse(data)['token'];
+});
 
 app.use(express.static(__dirname + '/GUI'));
 app.use(cors());
@@ -24,16 +29,21 @@ app.get('/', (req, res) => { // root dir for the smart mirror's GUI
 
 app.post('/calendar-api', (req, res) => { // calendar api path
     let body = req.body;
-    let cmdLine = parseCalBody(body);
-    exec(cmdLine, (err, stdout, stderr) => {
-        if (!err) {
-            res.send('Calendar successfully edited.');
-        } else {
-            res.send('There was an error with processing your request body. Make sure it\'s valid.');
-            console.log(err);
-            console.log(`\nBODY RECEIVED: ${JSON.stringify(body)}`);
-        }
-    });
+    let tokenReceived = body.token;
+    if (tokenReceived == token) {
+        let cmdLine = parseCalBody(body);
+        exec(cmdLine, (err, stdout, stderr) => {
+            if (!err) {
+                res.send('Calendar successfully edited.');
+            } else {
+                res.send('There was an error with processing your request body. Make sure it\'s valid.');
+                console.log(err);
+                console.log(`\nBODY RECEIVED: ${JSON.stringify(body)}`);
+            }
+        });
+    } else {
+        res.send("Invalid token. Please use a valid token.");
+    }
 }); 
 
 update(dataPath); // starts data updating sequence to keep data live

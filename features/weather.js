@@ -24,30 +24,34 @@ module.exports = {
         let currentHumidity;
 
         request.get(url, (error, response, body) => {
-            if (response.statusCode == 200 && !error) {
-                let $ = cheerio.load(body);
-                
-                currentSkyCode = $('current').attr('skycode');
-                currentIconURL = $('weather').attr('imagerelativeurl') + 'law/' + currentSkyCode + '.gif';
-                currentTemp = $('current').attr('temperature');
-                currentFeels = $('current').attr('feelslike');
-                currentSky = $('current').attr('skytext');
-                currentWind = $('current').attr('winddisplay');
-                currentHumidity = $('current').attr('humidity') + '%';
+            if (!error) {
+                if (response.statusCode == 200) {
+                    let $ = cheerio.load(body);
+                    
+                    currentSkyCode = $('current').attr('skycode');
+                    currentIconURL = $('weather').attr('imagerelativeurl') + 'law/' + currentSkyCode + '.gif';
+                    currentTemp = $('current').attr('temperature');
+                    currentFeels = $('current').attr('feelslike');
+                    currentSky = $('current').attr('skytext');
+                    currentWind = $('current').attr('winddisplay');
+                    currentHumidity = $('current').attr('humidity') + '%';
 
-                callback([
-                    currentIconURL,
-                    currentTemp,
-                    currentFeels,
-                    currentSky,
-                    currentWind,
-                    currentHumidity,
-                    degreeType.toUpperCase()
-                ]);
+                    callback([
+                        currentIconURL,
+                        currentTemp,
+                        currentFeels,
+                        currentSky,
+                        currentWind,
+                        currentHumidity,
+                        degreeType.toUpperCase()
+                    ]);
+                } else {
+                    console.log(`[ERROR - Status Code: ${response.statusCode}]`);
+                    callback(null);
+                }
             } else {
-                // ADD A WAY TO DISPLAY ON THE MIRROR THAT THERE WAS AN ERROR
-                console.log(`[Error : ${error}]`);
-                console.log(`Status Code: ${response.statusCode}`);
+                console.log(`[Weather Request Error : ${error}]`);
+                callback(null);
             }
         });
     }
