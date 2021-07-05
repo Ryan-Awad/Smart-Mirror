@@ -14,7 +14,11 @@ const app = express();
 const port = 3000;
 var token;
 fs.readFile('auth/token.json', (err, data) => {
-    token = JSON.parse(data)['token'];
+    if (!err) {
+        token = JSON.parse(data)['token'];
+    } else {
+        console.log("[ERROR WHEN LOADING THE API TOKEN]");
+    }
 });
 
 app.use(express.static(__dirname + '/GUI'));
