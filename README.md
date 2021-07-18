@@ -3,6 +3,8 @@
 ![](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?logo=Raspberry-Pi)
 ![](https://img.shields.io/badge/Linux-4d4d4d?logo=Linux)
 
+## [Check out the Mobile App Branch](https://github.com/Ryan-Awad/Smart-Mirror/tree/mobile-app)
+
 ## **Made competely from scratch (<ins>WITHOUT</ins> MagicMirror²)**
 #### (Previously utilized facial detection, but has now been removed due to overheating issues.)
 
@@ -10,10 +12,6 @@
  - ### Utilizes voice recognition
  - ### Built with a NodeJS and Python backend
  - ### Mirror display size: 900x1440
-
-# [Mobile App Branch](https://github.com/Ryan-Awad/Smart-Mirror/tree/mobile-app)
-
-<br>
 
 ### **To install, run the `config.sh` file**
 Note: Install in /~ directory on Raspberry Pi 
