@@ -11,6 +11,7 @@
  - ### Built with a NodeJS and Python backend
  - ### Mirror display size: 900x1440
 
+# [Mobile App Branch](https://github.com/Ryan-Awad/Smart-Mirror/tree/mobile-app)
 
 <br>
 
