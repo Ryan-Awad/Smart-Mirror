@@ -7,7 +7,7 @@ DARKER blue grey: #68777c
 */
 
 body {
-    background-image: linear-gradient(#75a2e0, #cbd8eb);
+    background-image: linear-gradient(#75a2e0, #ddebff);
     font-family: 'Roboto';
 }
 
@@ -20,7 +20,7 @@ input {
     padding: 5px;
     border-style: solid;
     border-radius: 3px;
-    border-width: 2px;
+    border-width: 1px;
     border-color: #3f4142;
     font-size: 15px;
     color: black;
@@ -30,7 +30,7 @@ button {
     background-color: #b2c4ce;
     padding: 7px;
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 5px;
     border-color: #2d2e2e;
     font-size: 15px;
@@ -65,7 +65,7 @@ label {
     border-style: solid;
     border-radius: 5px;
     border-color: #3f4142;
-    border-width: 2px;
+    border-width: 1px;
     font-size: 15px;
     color: black;
 }
